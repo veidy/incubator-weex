@@ -47,9 +47,9 @@
 // Insert the ESCAPE_SEQ into your string, followed by ";"
 
 #ifdef DEBUG
-static const WXLogLevel defaultLogLevel = WXLogLevelLog;
+static const WXWeexLogLevel defaultLogLevel = WXLogLevelLog;
 #else
-static const WXLogLevel defaultLogLevel = WXLogLevelWarning;
+static const WXWeexLogLevel defaultLogLevel = WXLogLevelWarning;
 #endif
 
 static id<WXLogProtocol> _externalLog;
@@ -66,7 +66,7 @@ static BOOL _logToWebSocket = NO;
 
 @implementation WXLog
 {
-    WXLogLevel _logLevel;
+    WXWeexLogLevel _logLevel;
 }
 
 + (instancetype)sharedInstance
@@ -83,10 +83,13 @@ static BOOL _logToWebSocket = NO;
     return _sharedInstance;
 }
 
-+ (void)setLogLevel:(WXLogLevel)level
++ (void)setLogLevel:(WXWeexLogLevel)level
 {
-    ((WXLog*)[self sharedInstance])->_logLevel = level;
+    if (((WXLog*)[self sharedInstance])->_logLevel != level) {
+        ((WXLog*)[self sharedInstance])->_logLevel = level;
 
+        [[WXSDKManager bridgeMgr] resetEnvironment];
+    }
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     Class propertyClass = NSClassFromString(@"WXTracingViewControllerManager");
@@ -97,7 +100,7 @@ static BOOL _logToWebSocket = NO;
 #pragma clang diagnostic pop
 }
 
-+ (WXLogLevel)logLevel
++ (WXWeexLogLevel)logLevel
 {
     return ((WXLog*)[self sharedInstance])->_logLevel;
 }

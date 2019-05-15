@@ -19,7 +19,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define WXLogLevel WeexLogLevel
+#define WXWeexLogLevel WeexLogLevel
 
 typedef NS_ENUM(NSInteger, WXLogFlag) {
     WXLogFlagError      = 1 << 0,
@@ -79,7 +79,7 @@ typedef NS_ENUM(NSUInteger, WeexLogLevel){
 /**
  * External log level.
  */
-- (WXLogLevel)logLevel;
+- (WXWeexLogLevel)logLevel;
 
 - (void)log:(WXLogFlag)flag message:(NSString *)message;
 
@@ -87,9 +87,9 @@ typedef NS_ENUM(NSUInteger, WeexLogLevel){
 
 @interface WXLog : NSObject
 
-+ (WXLogLevel)logLevel;
++ (WXWeexLogLevel)logLevel;
 
-+ (void)setLogLevel:(WXLogLevel)level;
++ (void)setLogLevel:(WXWeexLogLevel)level;
 
 + (NSString *)logLevelString;
 
