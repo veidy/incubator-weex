@@ -38,7 +38,8 @@ Pod::Spec.new do |s|
   # }
 
   # use for playground
-  s.source =  { :path => '.' }
+  #s.source =  { :path => '.' }
+  s.source = { :git => 'https://github.com/veidy/incubator-weex.git', :tag => s.version.to_s }
 
   s.source_files = 'ios/sdk/WeexSDK/Sources/**/*.{h,m,mm,c,cpp,cc}',
                     'weex_core/Source/base/**/*.{h,hpp,m,mm,c,cpp,cc}',
@@ -51,12 +52,12 @@ Pod::Spec.new do |s|
                     'weex_core/Source/base/base64',
                     'weex_core/Source/base/crash',
                     'weex_core/Source/base/utils',
-                    'weex_core/Source/base/thread',
-                    'weex_core/Source/base/third_party',
-                    'weex_core/Source/base/message_loop',
-                    'weex_core/Source/base/time_point.*',
-                    'weex_core/Source/base/time_utils.*',
-                    'weex_core/Source/base/time_unit.*',
+                    #'weex_core/Source/base/thread',
+                    #'weex_core/Source/base/third_party',
+                    #'weex_core/Source/base/message_loop',
+                    #'weex_core/Source/base/time_point.*',
+                    #'weex_core/Source/base/time_utils.*',
+                    #'weex_core/Source/base/time_unit.*',
                     'weex_core/Source/third_party/IPC',
                     'weex_core/Source/core/network/android/',
                     'weex_core/Source/include/JavaScriptCore/',
