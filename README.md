@@ -1,3 +1,10 @@
+#
+解决跟微信sdk  WXApi类里面的重名冲突
+
+
+
+
+
 # Weex
 
 A framework for building Mobile cross-platform UI.
